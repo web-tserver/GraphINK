@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Grafynx | Design Studio</title>
-  <meta name="description" content="Grafynx – Corporate Identity, Advertising Design, Logo, Branding, Social Media, UI/UX.">
+  <title>Grafynx | Design Studio | Printing Services</title>
+  <meta name="description" content="Grafynx – Corporate Identity, Advertising Design, Logo, Branding, Social Media, UI/UX, and printing services.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,700,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -217,7 +217,7 @@
       background: var(--accent);
       color: white;
     }
-    /* Modal Styles (same as original) */
+    /* Modal Styles */
     .service-modal {
       display: none;
       position: fixed;
@@ -612,7 +612,7 @@
   </div>
 </div>
 
-<!-- WHAT WE DO -->
+<!-- WHAT WE DO (Printing Service card now has no details and direct WhatsApp button) -->
 <section id="services">
   <div class="section-header">
     <h2 class="section-title">What We Do</h2>
@@ -722,29 +722,47 @@
 <script>
   const WHATSAPP_NUMBER = "60199083295";
 
-  // Full service data for "What We Do" modal (same as before)
+  // Full service data for "What We Do" modal – Printing Service has no details, uses direct WhatsApp button
   const servicesFull = [
     { name: "Corporate Identity", icon: "🏢", items: [ { label: "Business Card", price: "RM70" }, { label: "ID Card", price: "RM100" }, { label: "Company Profile", price: "RM700" }, { label: "Lanyard", price: "RM70" }, { label: "T-Shirt", price: "RM50+" }, { label: "Corporate Shirt", price: "RM100" }, { label: "Sublimation Jersey", price: "RM100" } ], note: "Print-Ready Files, CMYK Setup, Bleed and Margin Ready. All designs include mockup preview.", preview: "Business cards, ID cards, company profile, lanyards, apparel" },
     { name: "Advertising Design", icon: "📢", items: [ { label: "Bunting", price: "RM60" }, { label: "Banner", price: "RM80" }, { label: "Backdrop", price: "RM100" }, { label: "Signboard", price: "RM300+" }, { label: "Flags", price: "RM70" }, { label: "Flyer", price: "RM30-50" }, { label: "Poster", price: "RM30-50" }, { label: "Menu", price: "RM100+" }, { label: "Stickers", price: "RM30-50" } ], note: "Print-Ready Files, CMYK Setup, Bleed and Margin Ready. All designs include mockup preview.", preview: "Bunting, banners, backdrops, signboards, flyers, posters, menus, stickers" },
     { name: "Logo Design", icon: "✧", items: [ { label: "Custom Logo Concept", price: "RM280" }, { label: "2-3 Concepts", price: "included" }, { label: "2 Revisions", price: "included" }, { label: "High-Res Files", price: "included" } ], note: "Modern, minimal, bold — unique identity", preview: "Custom logo from RM280, 2-3 concepts, 2 revisions, high-res files" },
     { name: "Brand Identity", icon: "🎨", items: [ { label: "Complete Identity", price: "from RM700" }, { label: "Color Palette", price: "included" }, { label: "Typography", price: "included" }, { label: "Brand Guide", price: "included" } ], note: "Colors, typography, brand guide", preview: "Full brand identity from RM700, color palette, typography, guidelines" },
     { name: "Social Media Design", icon: "📱", items: [ { label: "Custom Post Design", price: "RM30/post" }, { label: "Monthly Package (24 posts)", price: "RM600" }, { label: "3 Revisions per post", price: "included" } ], note: "Posts, ads creatives, carousels", preview: "Single post RM30 or monthly package RM600 (24 posts)" },
-    { name: "Website / UI Design", icon: "🖥️", items: [ { label: "Website / UI Design", price: "from RM400" } ], note: "Clean, conversion-focused interfaces", preview: "Modern website & UI design starting from RM400" }
+    { name: "Website / UI Design", icon: "🖥️", items: [ { label: "Website / UI Design", price: "from RM400" } ], note: "Clean, conversion-focused interfaces", preview: "Modern website & UI design starting from RM400" },
+    // PRINTING SERVICE: no items, direct WhatsApp button
+    { name: "Printing Service", icon: "🖨️", items: [], note: "Get custom designs for all your printing needs – sublimation, DTF, silkscreen, banners, bunting, lanyards, aprons, caps, and more. Contact us for a quote.", preview: "Custom design for sublimation, DTF, silkscreen, banner, bunting, lanyard, apron, cap, and more." }
   ];
 
   function renderCompactServices() {
     const container = document.getElementById('serviceGrid');
     if(!container) return;
-    container.innerHTML = servicesFull.map(service => `
-      <div class="service-card" data-service-name="${service.name}">
-        <div class="service-icon">${service.icon}</div>
-        <h3>${service.name}</h3>
-        <div class="service-preview">${service.preview.substring(0, 80)}${service.preview.length > 80 ? '…' : ''}</div>
-        <button class="view-details-btn">View Details</button>
-      </div>
-    `).join('');
+    container.innerHTML = servicesFull.map(service => {
+      // Special handling for Printing Service: no "View Details" button, instead a direct WhatsApp button
+      if (service.name === "Printing Service") {
+        return `
+          <div class="service-card" data-service-name="${service.name}" style="cursor: default;">
+            <div class="service-icon">${service.icon}</div>
+            <h3>${service.name}</h3>
+            <div class="service-preview">${service.preview}</div>
+            <button class="view-details-btn" style="background: var(--accent); color: white;" onclick="window.open('https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hi Grafynx, I need printing service. Please share more details.')}', '_blank')">Inquire Now →</button>
+          </div>
+        `;
+      }
+      return `
+        <div class="service-card" data-service-name="${service.name}">
+          <div class="service-icon">${service.icon}</div>
+          <h3>${service.name}</h3>
+          <div class="service-preview">${service.preview.substring(0, 80)}${service.preview.length > 80 ? '…' : ''}</div>
+          <button class="view-details-btn">View Details</button>
+        </div>
+      `;
+    }).join('');
+
+    // Attach modal triggers for non-printing cards
     document.querySelectorAll('.service-card').forEach(card => {
       const serviceName = card.getAttribute('data-service-name');
+      if (serviceName === "Printing Service") return; // skip, already has direct button
       const service = servicesFull.find(s => s.name === serviceName);
       if(service) {
         card.addEventListener('click', (e) => {
@@ -892,6 +910,14 @@
     const targetId = link.getAttribute('href').substring(1);
     document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
   }));
+
+  // Modal close event listeners (X button and backdrop click)
+  const modal = document.getElementById('serviceModal');
+  const closeModalBtn = document.getElementById('closeModalBtn');
+  closeModalBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
 
   buildAlbumTabs();
   updateSwiperSlides();
