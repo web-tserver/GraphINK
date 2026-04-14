@@ -335,7 +335,7 @@
       transform: scale(1.01);
     }
 
-    /* About Us Cards (formerly Details) */
+    /* About Us Cards */
     .about-wrapper {
       display: flex;
       flex-wrap: wrap;
@@ -411,7 +411,7 @@
       color: var(--text-muted);
     }
 
-    /* Packages Section */
+    /* Packages Section - Pink background, white/black text */
     .packages-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -419,35 +419,37 @@
       margin-top: 20px;
     }
     .package-card {
-      background: rgba(255,255,255,0.7);
+      background: var(--accent);  /* pink background */
       backdrop-filter: blur(12px);
       border-radius: 32px;
       padding: 28px;
-      border: 1px solid rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.3);
       transition: transform 0.2s;
       display: flex;
       flex-direction: column;
+      color: #1e293b; /* dark text for contrast */
     }
     .package-card:hover {
       transform: translateY(-4px);
-      border-color: var(--accent);
+      border-color: white;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.1);
     }
     .package-card h3 {
       font-size: 26px;
       font-weight: 800;
       margin-bottom: 12px;
-      color: var(--accent);
+      color: white;
     }
     .package-price {
       font-size: 28px;
       font-weight: 800;
       margin: 16px 0;
-      color: #1e293b;
+      color: white;
     }
     .package-price span {
       font-size: 16px;
       font-weight: 500;
-      color: var(--text-muted);
+      color: rgba(255,255,255,0.8);
     }
     .package-list {
       list-style: none;
@@ -455,38 +457,40 @@
     }
     .package-list li {
       padding: 8px 0;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
       display: flex;
       align-items: center;
       gap: 10px;
       font-size: 14px;
+      color: #1e293b;
     }
     .package-list li::before {
       content: "✓";
-      color: var(--accent);
+      color: white;
       font-weight: bold;
     }
     .package-note {
       font-size: 12px;
-      color: var(--text-muted);
+      color: rgba(0,0,0,0.7);
       margin-top: 16px;
       padding-top: 12px;
-      border-top: 1px dashed rgba(0,0,0,0.1);
+      border-top: 1px dashed rgba(255,255,255,0.3);
     }
     .badge-icon {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(255,77,140,0.1);
+      background: rgba(255,255,255,0.2);
       padding: 4px 12px;
       border-radius: 30px;
       font-size: 12px;
       font-weight: 600;
       margin-bottom: 12px;
       align-self: flex-start;
+      color: white;
     }
     .package-inq-btn {
-      background: rgba(255,77,140,0.15);
+      background: white;
       border: none;
       padding: 10px 20px;
       border-radius: 60px;
@@ -499,7 +503,7 @@
       width: 100%;
     }
     .package-inq-btn:hover {
-      background: var(--accent);
+      background: #1e293b;
       color: white;
     }
 
@@ -702,7 +706,7 @@
   <div id="mobileDropdown" style="display: none; flex-direction: column; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border-radius: 32px; margin-top: 12px; padding: 16px; gap: 12px;"></div>
 </header>
 
-<!-- HOME SECTION with colored title -->
+<!-- HOME SECTION -->
 <section id="home" class="hero">
   <div class="hero-grid">
     <div class="hero-content">
@@ -717,7 +721,7 @@
   </div>
 </section>
 
-<!-- ABOUT US SECTION (formerly Details) -->
+<!-- ABOUT US SECTION -->
 <div style="max-width:1280px; margin:0 auto; padding:0 24px;" id="about-us">
   <div class="about-wrapper">
     <div class="about-card"><div class="about-icon">🎯</div><h3>Strategy-Driven Design</h3><p>Not just aesthetics — we build purpose into every pixel. Your brand will speak clearly, connect emotionally, and stand out in competitive markets.</p></div>
@@ -725,7 +729,7 @@
   </div>
 </div>
 
-<!-- WHAT WE DO (compact cards with modal) -->
+<!-- WHAT WE DO -->
 <section id="services">
   <div class="section-header">
     <h2 class="section-title">What We Do</h2>
@@ -750,7 +754,7 @@
   </div>
 </section>
 
-<!-- DESIGN PACKAGES -->
+<!-- DESIGN PACKAGES (pink background) -->
 <section id="packages">
   <div class="section-header"><h2 class="section-title">Design Packages</h2><div class="section-sub">Choose the perfect plan for your brand</div></div>
   <div class="packages-grid" id="packagesGrid">
@@ -810,14 +814,14 @@
   <p style="text-align: center; margin-top: 20px; font-size: 13px; color: var(--text-muted);">📢 All prices are estimates. Final quote depends on project complexity, number of revisions, and timeline.</p>
 </section>
 
-<!-- PORTFOLIO (moved after Packages) -->
+<!-- PORTFOLIO -->
 <section id="portfolio" class="portfolio-section">
   <div class="section-header"><h2 class="section-title">Portfolio</h2><div class="section-sub">swipe through our work — subcategory albums</div></div>
   <div class="album-tabs" id="albumTabs"></div>
   <div class="swiper portfolio-swiper" id="portfolioSwiper"><div class="swiper-wrapper" id="swiperWrapper"></div><div class="swiper-pagination"></div><div class="swiper-button-next"></div><div class="swiper-button-prev"></div></div>
 </section>
 
-<!-- PRINT PRICE ESTIMATOR (with expandable breakdown) -->
+<!-- PRINT PRICE ESTIMATOR (clean notes) -->
 <section id="print-estimator">
   <div class="section-header"><h2 class="section-title">🖨️ Print Price Estimate</h2><div class="section-sub">Instant pricing for sublimation, silkscreen, DTF, lanyard, bunting & banner</div></div>
   <div class="estimator-grid">
@@ -825,8 +829,8 @@
     <div class="estimator-card"><h3>🎨 Silkscreen (T-Shirt)</h3><div class="estimator-field"><label>Quantity (pcs)</label><input type="number" id="ss_qty" class="estimator-input" min="0" value="0" step="1"></div><div class="estimator-field"><label>Base Shirt Type</label><select id="ss_shirt" class="estimator-select"><option value="13.50">Roundneck (RM13.50)</option><option value="18.50">Collar (RM18.50)</option><option value="23.00">Polo (RM23.00)</option></select></div><div class="estimator-field"><label>Front Colors</label><select id="ss_front" class="estimator-select"><option value="0">1 Color</option><option value="1">2 Colors</option><option value="2">3 Colors</option><option value="3">4 Colors</option><option value="4">5 Colors</option><option value="5">6 Colors</option><option value="6">7 Colors</option><option value="7">8 Colors</option></select></div><div class="estimator-field"><label>Back Colors</label><select id="ss_back" class="estimator-select"><option value="-1">No Print</option><option value="0">1 Color</option><option value="1">2 Colors</option><option value="2">3 Colors</option><option value="3">4 Colors</option><option value="4">5 Colors</option><option value="5">6 Colors</option><option value="6">7 Colors</option><option value="7">8 Colors</option></select></div><div class="estimate-result"><div class="estimate-price" id="ss_estimate">RM 0.00</div><button class="breakdown-toggle-btn" data-target="ss_breakdown">Show breakdown</button><div id="ss_breakdown" class="price-breakdown"></div><div class="estimate-note">*Includes base shirt + print cost</div></div></div>
     <div class="estimator-card"><h3>✨ DTF Transfer (Any Garment)</h3><div class="estimator-field"><label>Quantity (pcs)</label><input type="number" id="dtf_qty" class="estimator-input" min="0" value="0" step="1"></div><div class="estimator-field"><label>Print Size (Front)</label><select id="dtf_front" class="estimator-select"><option value="0">No Print</option><option value="4">Smaller than A4 (RM4)</option><option value="8">A4 (RM8)</option><option value="10">A3 (RM10)</option><option value="12">Bigger than A3 (RM12)</option></select></div><div class="estimator-field"><label>Print Size (Back)</label><select id="dtf_back" class="estimator-select"><option value="0">No Print</option><option value="4">Smaller than A4 (RM4)</option><option value="8">A4 (RM8)</option><option value="10">A3 (RM10)</option><option value="12">Bigger than A3 (RM12)</option></select></div><div class="estimator-field"><label>Sleeve Prints (per arm)</label><input type="number" id="dtf_sleeve" class="estimator-input" min="0" value="0" step="1"></div><div class="estimate-result"><div class="estimate-price" id="dtf_estimate">RM 0.00</div><button class="breakdown-toggle-btn" data-target="dtf_breakdown">Show breakdown</button><div id="dtf_breakdown" class="price-breakdown"></div><div class="estimate-note">*Transfer only, garment not included</div></div></div>
     <div class="estimator-card"><h3>📎 Lanyard (Sublimation)</h3><div class="estimator-field"><label>Quantity (pcs)</label><input type="number" id="lan_qty" class="estimator-input" min="0" value="0" step="1"></div><div class="estimator-field"><label>Size</label><select id="lan_size" class="estimator-select"><option value="20">20MM</option><option value="25">25MM</option></select></div><div class="estimator-field"><label>Buckle</label><select id="lan_buckle" class="estimator-select"><option value="with">With Buckle</option><option value="no">No Buckle</option></select></div><div class="estimate-result"><div class="estimate-price" id="lan_estimate">RM 0.00</div><button class="breakdown-toggle-btn" data-target="lan_breakdown">Show breakdown</button><div id="lan_breakdown" class="price-breakdown"></div><div class="estimate-note">*Full colour print + clip included</div></div></div>
-    <div class="estimator-card"><h3>🏳️ Bunting (Vertical) - Custom Size</h3><div class="estimator-field"><label>Quantity</label><input type="number" id="bun_qty" class="estimator-input" min="0" value="0" step="1"></div><div class="estimator-field"><label>Height (ft)</label><input type="number" id="bun_h" class="estimator-input" min="0" value="0" step="0.5" placeholder="e.g., 6"></div><div class="estimator-field"><label>Width (ft)</label><input type="number" id="bun_w" class="estimator-input" min="0" value="0" step="0.5" placeholder="e.g., 2"></div><div class="estimate-result"><div class="estimate-price" id="bun_estimate">RM 0.00</div><button class="breakdown-toggle-btn" data-target="bun_breakdown">Show breakdown</button><div id="bun_breakdown" class="price-breakdown"></div><div class="estimate-note">*Tarpaulin 380gsm, hem & eyelets. Price = max(RM23, area×2+3) per piece.</div></div></div>
-    <div class="estimator-card"><h3>📰 Banner (Horizontal) - Custom Size</h3><div class="estimator-field"><label>Quantity</label><input type="number" id="banner_qty" class="estimator-input" min="0" value="0" step="1"></div><div class="estimator-field"><label>Height (ft)</label><input type="number" id="banner_h" class="estimator-input" min="0" value="0" step="0.5" placeholder="e.g., 3"></div><div class="estimator-field"><label>Width (ft)</label><input type="number" id="banner_w" class="estimator-input" min="0" value="0" step="0.5" placeholder="e.g., 6"></div><div class="estimate-result"><div class="estimate-price" id="banner_estimate">RM 0.00</div><button class="breakdown-toggle-btn" data-target="banner_breakdown">Show breakdown</button><div id="banner_breakdown" class="price-breakdown"></div><div class="estimate-note">*Tarpaulin 380gsm, hem & eyelets. Price = max(RM23, area×2+3) per piece.</div></div></div>
+    <div class="estimator-card"><h3>🏳️ Bunting (Vertical) - Custom Size</h3><div class="estimator-field"><label>Quantity</label><input type="number" id="bun_qty" class="estimator-input" min="0" value="0" step="1"></div><div class="estimator-field"><label>Height (ft)</label><input type="number" id="bun_h" class="estimator-input" min="0" value="0" step="0.5" placeholder="e.g., 6"></div><div class="estimator-field"><label>Width (ft)</label><input type="number" id="bun_w" class="estimator-input" min="0" value="0" step="0.5" placeholder="e.g., 2"></div><div class="estimate-result"><div class="estimate-price" id="bun_estimate">RM 0.00</div><button class="breakdown-toggle-btn" data-target="bun_breakdown">Show breakdown</button><div id="bun_breakdown" class="price-breakdown"></div><div class="estimate-note">*Tarpaulin 380gsm, hem & eyelets</div></div></div>
+    <div class="estimator-card"><h3>📰 Banner (Horizontal) - Custom Size</h3><div class="estimator-field"><label>Quantity</label><input type="number" id="banner_qty" class="estimator-input" min="0" value="0" step="1"></div><div class="estimator-field"><label>Height (ft)</label><input type="number" id="banner_h" class="estimator-input" min="0" value="0" step="0.5" placeholder="e.g., 3"></div><div class="estimator-field"><label>Width (ft)</label><input type="number" id="banner_w" class="estimator-input" min="0" value="0" step="0.5" placeholder="e.g., 6"></div><div class="estimate-result"><div class="estimate-price" id="banner_estimate">RM 0.00</div><button class="breakdown-toggle-btn" data-target="banner_breakdown">Show breakdown</button><div id="banner_breakdown" class="price-breakdown"></div><div class="estimate-note">*Tarpaulin 380gsm, hem & eyelets</div></div></div>
   </div>
   <p style="text-align: center; margin-top: 20px; font-size: 13px; color: var(--text-muted);">📢 Prices are estimates. Final quote depends on artwork complexity, rush order, and shipping.</p>
 </section>
