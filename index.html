@@ -125,10 +125,13 @@
       font-weight: 800;
       line-height: 1.1;
       letter-spacing: -2px;
-      background: linear-gradient(135deg, #1e1b4b, #4c1d95, #db2777);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      margin-bottom: 0;
+    }
+    .hero-title .graphink-pink {
+      color: var(--accent);
+    }
+    .hero-title .visual-impact {
+      color: #1e293b;
     }
     .hero-desc {
       font-size: 20px;
@@ -699,12 +702,15 @@
   <div id="mobileDropdown" style="display: none; flex-direction: column; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border-radius: 32px; margin-top: 12px; padding: 16px; gap: 12px;"></div>
 </header>
 
-<!-- HOME SECTION (bigger size) -->
+<!-- HOME SECTION with colored title -->
 <section id="home" class="hero">
   <div class="hero-grid">
     <div class="hero-content">
       <div class="hero-badge">✧ Design That Builds Identity ✧</div>
-      <h1 class="hero-title">GRAPHINK<br>Visual Impact</h1>
+      <h1 class="hero-title">
+        <span class="graphink-pink">GRAPHINK</span><br>
+        <span class="visual-impact">Visual Impact</span>
+      </h1>
       <p class="hero-desc">We create strategy-driven visuals that capture attention, build trust, and accelerate growth — from logos to complete brand ecosystems.</p>
       <button class="cta-button" id="exploreBtn">Explore Services →</button>
     </div>
@@ -762,7 +768,7 @@
       <div><strong>Best for:</strong> New Businesses, Rebranding, Personal Branding</div>
       <div class="package-note">Turnaround: 5-7 working days</div>
       <div class="package-note">Prices start from stated amount. Final pricing depends on project scope, revisions &amp; timeline.</div>
-      <button class="package-inq-btn" data-package="Logo Design">Inquire</button>
+      <button class="package-inq-btn" data-package="Logo Design">Inquire about Logo Design</button>
     </div>
     <div class="package-card">
       <div class="badge-icon">🏷️ BRANDING & IDENTITY</div>
@@ -781,7 +787,7 @@
       <div><strong>Best for:</strong> SMEs, Corporate Brands, Long-Term Brand Growth</div>
       <div class="package-note">Turnaround: 7-14 working days (generate ideas and concept)</div>
       <div class="package-note">Prices start from stated amount. Final pricing depends on project scope, revisions &amp; timeline.</div>
-      <button class="package-inq-btn" data-package="Branding & Identity">Inquire</button>
+      <button class="package-inq-btn" data-package="Branding & Identity">Inquire about Branding</button>
     </div>
     <div class="package-card">
       <div class="badge-icon">📱 MONTHLY PACKAGE</div>
@@ -798,7 +804,7 @@
       <div><strong>Option:</strong> Single post – RM30</div>
       <div><strong>Terms:</strong> Content must be provided. Urgent design = extra charge</div>
       <div class="package-note">Prices start from stated amount. Final pricing depends on project scope, revisions &amp; timeline.</div>
-      <button class="package-inq-btn" data-package="Monthly Package">Inquire</button>
+      <button class="package-inq-btn" data-package="Monthly Package">Inquire about Monthly Package</button>
     </div>
   </div>
   <p style="text-align: center; margin-top: 20px; font-size: 13px; color: var(--text-muted);">📢 All prices are estimates. Final quote depends on project complexity, number of revisions, and timeline.</p>
