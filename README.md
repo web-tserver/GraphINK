@@ -1,1 +1,1 @@
-# GraphINK
+# Grafynx
