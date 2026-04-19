@@ -32,6 +32,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,700,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <!-- GLightbox CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
   <style>
     /* === Base & Glass Styles === */
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -644,6 +646,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
     }
     .portfolio-swiper .swiper-slide:hover { transform: scale(1.02); }
 
@@ -665,6 +668,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
     }
     .portfolio-grid-item:hover { transform: scale(1.02); }
 
@@ -739,6 +743,11 @@
       justify-content: center;
     }
     .swiper-button-next:after, .swiper-button-prev:after { font-size: 18px; font-weight: bold; }
+
+    /* GLightbox custom close button color */
+    .glightbox-clean .gclose, .glightbox-clean .gnext, .glightbox-clean .gprev {
+      color: var(--accent) !important;
+    }
 
     .back-to-top {
       position: fixed;
@@ -952,6 +961,8 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<!-- GLightbox JS -->
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
 <script>
   const WHATSAPP_NUMBER = "60199083295";
 
@@ -1076,6 +1087,8 @@
   }
 
   // ---------- LAZY LOADING BLUR-UP EFFECT ----------
+  let lightbox = null;
+
   function initBlurLoading() {
     const images = document.querySelectorAll('.blur-load');
     images.forEach(div => {
@@ -1085,16 +1098,24 @@
       } else {
         img.addEventListener('load', () => div.classList.add('loaded'));
       }
-      // Fallback if image fails
       img.addEventListener('error', () => {
         div.classList.add('loaded');
-        // Show upcoming placeholder if needed
         const parent = div.parentElement;
         if (parent && !parent.querySelector('.upcoming-placeholder')) {
           const placeholder = createUpcomingPlaceholder();
           div.replaceWith(placeholder);
         }
       });
+    });
+    // Re-initialize GLightbox for new images
+    if (lightbox) {
+      lightbox.destroy();
+    }
+    lightbox = GLightbox({
+      selector: '.glightbox',
+      touchNavigation: true,
+      loop: true,
+      autoplayVideos: false
     });
   }
 
@@ -1104,7 +1125,6 @@
     if (tinySrc) {
       div.style.backgroundImage = `url('${tinySrc}')`;
     } else {
-      // Generate a tiny base64 placeholder (optional)
       div.style.background = '#f0d0e0';
     }
     const img = document.createElement('img');
@@ -1113,6 +1133,15 @@
     img.loading = 'lazy';
     div.appendChild(img);
     return div;
+  }
+
+  // Make items lightbox-triggerable
+  function wrapWithGlightbox(element, src, alt) {
+    element.classList.add('glightbox');
+    element.setAttribute('href', src);
+    element.setAttribute('data-gallery', 'portfolio');
+    element.setAttribute('data-title', alt);
+    return element;
   }
 
   // ---------- PORTFOLIO: Albums with .webp images from /images/ folder ----------
@@ -1196,6 +1225,7 @@
       slide.className = 'swiper-slide';
       const blurDiv = createBlurLoadElement(src, altText, null);
       slide.appendChild(blurDiv);
+      wrapWithGlightbox(slide, src, altText);
       wrapper.appendChild(slide);
     });
     
@@ -1222,6 +1252,7 @@
       gridItem.className = 'portfolio-grid-item';
       const blurDiv = createBlurLoadElement(src, altText, null);
       gridItem.appendChild(blurDiv);
+      wrapWithGlightbox(gridItem, src, altText);
       gridEl.appendChild(gridItem);
     });
     initBlurLoading();
