@@ -1045,12 +1045,24 @@
     document.querySelectorAll('.service-card, .package-card, .workflow-step, .about-card').forEach(el => observer.observe(el));
   }
 
-  // ---------- PORTFOLIO: Albums with .webp images ----------
+  // ---------- PORTFOLIO: Albums with .webp images from /images/ folder ----------
   const baseAlbums = {
-    "Social Media": ["social1.webp", "social2.webp", "social3.webp", "social4.webp", "social5.webp", "social6.webp"],
-    "Branding": ["branding1.webp", "branding2.webp", "branding3.webp", "branding4.webp", "branding5.webp", "branding6.webp"],
-    "Print": ["print1.webp", "print2.webp", "print3.webp", "print4.webp", "print5.webp", "print6.webp"],
-    "UI/UX": ["uiux1.webp", "uiux2.webp", "uiux3.webp", "uiux4.webp", "uiux5.webp", "uiux6.webp"]
+    "Social Media": [
+      "images/social1.webp", "images/social2.webp", "images/social3.webp",
+      "images/social4.webp", "images/social5.webp", "images/social6.webp"
+    ],
+    "Branding": [
+      "images/branding1.webp", "images/branding2.webp", "images/branding3.webp",
+      "images/branding4.webp", "images/branding5.webp", "images/branding6.webp"
+    ],
+    "Print": [
+      "images/print1.webp", "images/print2.webp", "images/print3.webp",
+      "images/print4.webp", "images/print5.webp", "images/print6.webp"
+    ],
+    "UI/UX": [
+      "images/uiux1.webp", "images/uiux2.webp", "images/uiux3.webp",
+      "images/uiux4.webp", "images/uiux5.webp", "images/uiux6.webp"
+    ]
   };
   
   const allImages = Object.values(baseAlbums).flat();
