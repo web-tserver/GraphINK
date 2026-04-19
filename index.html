@@ -62,7 +62,6 @@
       opacity: 1;
       transform: translateY(0);
     }
-    /* Stagger children for grid items */
     .service-grid .service-card,
     .packages-grid .package-card,
     .workflow-step,
@@ -107,7 +106,6 @@
       align-items: center;
       justify-content: center;
       font-weight: 800; font-size: 20px; color: white;
-      /* No box-shadow */
       background-image: url('logo.png');
       background-size: cover;
       background-position: center;
@@ -926,7 +924,7 @@
 <script>
   const WHATSAPP_NUMBER = "60199083295";
 
-  // Service data (unchanged)
+  // Service data
   const servicesFull = [
     { name: "Corporate Identity", icon: "🏢", items: [ { label: "Business Card", price: "RM70" }, { label: "ID Card", price: "RM100" }, { label: "Company Profile", price: "RM700" }, { label: "Lanyard", price: "RM70" }, { label: "T-Shirt", price: "RM50+" }, { label: "Corporate Shirt", price: "RM100" }, { label: "Sublimation Jersey", price: "RM100" } ], note: "Print-Ready Files, CMYK Setup, Bleed and Margin Ready. All designs include mockup preview.", preview: "Business cards, ID cards, company profile, lanyards, apparel" },
     { name: "Advertising Design", icon: "📢", items: [ { label: "Bunting", price: "RM60" }, { label: "Banner", price: "RM80" }, { label: "Backdrop", price: "RM100" }, { label: "Signboard", price: "RM300+" }, { label: "Flags", price: "RM70" }, { label: "Flyer", price: "RM30-50" }, { label: "Poster", price: "RM30-50" }, { label: "Menu", price: "RM100+" }, { label: "Stickers", price: "RM30-50" } ], note: "Print-Ready Files, CMYK Setup, Bleed and Margin Ready. All designs include mockup preview.", preview: "Bunting, banners, backdrops, signboards, flyers, posters, menus, stickers" },
@@ -982,7 +980,6 @@
         });
       }
     });
-    // Trigger scroll animation after rendering
     setTimeout(() => observeElements(), 50);
   }
 
@@ -1035,7 +1032,7 @@
     });
   }
 
-  // ---------- SCROLL ANIMATION (Intersection Observer) ----------
+  // Scroll Animation
   function observeElements() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -1045,17 +1042,15 @@
       });
     }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
 
-    // Observe cards and steps
     document.querySelectorAll('.service-card, .package-card, .workflow-step, .about-card').forEach(el => observer.observe(el));
-    // Observe section headers? (optional)
   }
 
-  // ---------- PORTFOLIO: Albums, Swiper & Grid ----------
+  // ---------- PORTFOLIO: Albums with .webp images ----------
   const baseAlbums = {
-    "Social Media": ["social1.png", "social2.png", "social3.png", "social4.png", "social5.png", "social6.png"],
-    "Branding": ["branding1.png", "branding2.png", "branding3.png", "branding4.png", "branding5.png", "branding6.png"],
-    "Print": ["print1.png", "print2.png", "print3.png", "print4.png", "print5.png", "print6.png"],
-    "UI/UX": ["uiux1.png", "uiux2.png", "uiux3.png", "uiux4.png", "uiux5.png", "uiux6.png"]
+    "Social Media": ["social1.webp", "social2.webp", "social3.webp", "social4.webp", "social5.webp", "social6.webp"],
+    "Branding": ["branding1.webp", "branding2.webp", "branding3.webp", "branding4.webp", "branding5.webp", "branding6.webp"],
+    "Print": ["print1.webp", "print2.webp", "print3.webp", "print4.webp", "print5.webp", "print6.webp"],
+    "UI/UX": ["uiux1.webp", "uiux2.webp", "uiux3.webp", "uiux4.webp", "uiux5.webp", "uiux6.webp"]
   };
   
   const allImages = Object.values(baseAlbums).flat();
@@ -1069,7 +1064,6 @@
   const gridContainer = document.getElementById('portfolioGridContainer');
   const gridEl = document.getElementById('portfolioGrid');
 
-  // Helper to create an "Upcoming" placeholder (no icon, Clash Display font)
   function createUpcomingPlaceholder() {
     const div = document.createElement('div');
     div.className = 'upcoming-placeholder';
@@ -1142,7 +1136,7 @@
     }).join('');
   }
 
-  // Initialize with swiper (activeAlbum is Social Media)
+  // Initialize with swiper
   renderSwiper(albums["Social Media"]);
 
   // Back to top
@@ -1150,7 +1144,7 @@
   window.addEventListener('scroll', () => backBtn.classList.toggle('visible', window.scrollY > 400));
   backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-  // ---------- MOBILE MENU (GLASS STYLE) ----------
+  // Mobile Menu
   const mobileBtn = document.getElementById('mobileMenuBtn');
   const mobileDropdown = document.getElementById('mobileDropdown');
 
@@ -1191,9 +1185,7 @@
     window.addEventListener('load', updateMobileActive);
     
     mobileLinks.forEach(a => {
-      a.addEventListener('click', (e) => {
-        mobileDropdown.style.display = 'none';
-      });
+      a.addEventListener('click', () => mobileDropdown.style.display = 'none');
     });
   }
 
@@ -1213,11 +1205,11 @@
     buildMobileMenu();
   }
 
-  // ---------- OTHER UI ----------
+  // Other UI
   document.getElementById('exploreBtn')?.addEventListener('click', () => document.getElementById('services').scrollIntoView({ behavior: 'smooth' }));
   document.getElementById('contactBtn')?.addEventListener('click', () => window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hi Grafynx! I want to build my brand identity.')}`, '_blank'));
 
-  // Active nav highlight for desktop
+  // Desktop nav active
   const sections = ['home', 'about-us', 'services', 'workflow', 'packages', 'portfolio'];
   const desktopNavLinks = document.querySelectorAll('.nav-links a:not([href*=".html"])');
   function updateActiveNav() {
@@ -1248,11 +1240,11 @@
     if (e.target === modal) closeModal();
   });
 
-  // Initialize everything
+  // Initialize
   buildAlbumTabs();
   renderCompactServices();
   attachPackageInquiry();
-  observeElements(); // start observing for scroll animations
+  observeElements();
 </script>
 </body>
 </html>
